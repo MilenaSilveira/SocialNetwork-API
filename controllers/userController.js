@@ -54,7 +54,7 @@ findOneUser(req, res) {
       });
   },
 
-  createFriend(req, res) {
+  addFriend(req, res) {
     User.findOneAndUpdate(
       { _id: req.params.userId },
       { $addToSet: { friends: req.params.friendId } }
@@ -67,7 +67,7 @@ findOneUser(req, res) {
       .catch((err) => res.status(500).json(err));
   },
 
-  deleteFriend(req, res) {
+  removeFriend(req, res) {
     User.findOneAndUpdate(
       { _id: req.params.userId },
       { $pull: { friends: req.params.friendId } }
